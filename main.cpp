@@ -4,15 +4,14 @@
 #include <time.h>
 
 void main() {
-
-
 	int proj, chosen;
-	int L = 14; // Amount of projects
-	int list[13]; // Number of students
+	int L = 24; // Amount of projects
+	int N = 14; // Number of students
+	int* list; list = (int*)malloc(N * sizeof(int));
 
 	srand(time(NULL));
 
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < N; i++)
 	{
 		do {
 			chosen = 1;
@@ -24,8 +23,8 @@ void main() {
 		} while (chosen != 1); // Until generated project is not unique - iterate
 	}
 
-	printf("Students number \t Project number")
-	for (int i = 0; i < 13; i++) printf("%3.0d \t %3.0d\n", i,list[i]);
+	printf("Students number \t Project number\n");
+	for (int i = 0; i < N; i++) printf("%3.0d \t %3.0d\n", i+1, list[i]);
 
-
+	free(list);
 }
