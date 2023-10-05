@@ -4,6 +4,7 @@
 #include <time.h>
 
 void main() {
+	int a;
 	int proj, chosen;
 	int L = 24; // Amount of projects
 	int N = 14; // Number of students
