@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-
+//Program losujący raporty
 void main() {
 	int a;
 	int proj, chosen;
