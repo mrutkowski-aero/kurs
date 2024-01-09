@@ -1,12 +1,20 @@
+Href=0.5[m], Uref = 5[m/s], alfa = 0.24, kappa = 0.4, z0 = 0.001[m], zg = 0.01[m], zmin = 0.001[m]
+ustar:
+(kappa*Uref)/log((Href+z0)/z0)
 Uabl:
-IF(z>Zmin,IF(z<Zmax,(z/Zref)^alpha,1),(Zmin/Zref)^alpha) 
+(ustar/kappa)*log((z+z0)/z0)
+TI:
+IF(z>zmin,0.1*(z/zg)^(-1*alfa-0.05),0.18*(zmin/zg)^(-1*alfa-0.05))
+TurbKinEnergy:
+IF(z>zmin,(TI*uabl)^2, 0 [m^2 s^-2])
+DissipationRate:
+(ustar^3)/(kappa*(z + z0))
+
+#################################################
 Ug:
 IF(z>0.93[m],((1[m]-z)/0.07[m])^0.1,1)
 Uxl:
 IF((x+0.5[m])<0.07[m],((x+0.5[m])/0.07[m])^0.1,1)
 Uxp:
 IF((x+0.5[m])>0.93[m],((1[m]-(x+0.5[m]))/0.07[m])^0.1,1)
-TI:
-IF(z>Z0,0.1*(z/Z0)^(-alpha-0.05),0.1*(Z0/Z0)^(-alpha-0.05) )
-TurbKinEnergy:
-(TI*U)^2
+
