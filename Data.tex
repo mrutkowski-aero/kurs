@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{csvsimple,longtable}
+\usepackage{pgfplots}
+
+%Todo notes
+\usepackage[colorinlistoftodos]{todonotes} %disable
+\usepackage{hyperref}
+\usepackage{lipsum}
+
+%acronym
+\usepackage[acronym,nomain]{glossaries}
+
+\newacronym{cfd}{CFD}{Computational Fluid Dynamics}
+
+%\hyphenation{pa-ra-me-tri-zed}
+
+\csvstyle{tabele}{
+longtable=lll,
+%tabular = |l|l|l|,
+table head = \hline & Iteracja & N. optymalizacji \\\hline,
+head to column names,
+%before reading={\catcode`\"=9},
+%after reading={\catcode`\"=13},
+%head to column names prefix = MY,
+}
+
+\title{Tables and plots}
+\author{Mariusz Rutkowski}
+\date{April 2024}
+
+\begin{document}
+\listoftodos
+\maketitle
+\newpage
+
+\section{TABLE}
+\csvreader[tabele]{Data.csv}{}%
+{\thecsvrow & \Iteration & \Optimization}%
+
+\section{PLOT}
+\input{plot}
+
+\include{plot}
+
+\newpage
+
+\section{TODO}
+\lipsum[1]
+\todo[author=Lukasz, color = red]{dodać tabele}
+\lipsum[2]
+\todo[author=Marek, color = green, inline]{dodać tabele}
+
+\section{Hyphenation}
+\lipsum[1][4] Parametrized.
+\gls{cfd} \lipsum[1][1] \gls{cfd}.
+
+
+
+\end{document}
