@@ -1,0 +1,39 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <math.h>
+#include "winbgi2.h"
+#include "kwad.h"
+
+double fun1(double x);
+double fun2(double a, double b);
+
+int main()
+{
+	int m, n=29;
+	double a = 0.1, b = 5, integT, integS, integA;
+	FILE* f;
+
+	f = fopen("dane.txt", "w");
+
+	integA = fun2(a, b);
+	fprintf(f,"N;H;CA;CT;CS\n");
+	for (int i = 1; i < n; i++)
+	{
+		m = pow(2, (double)i);
+		integT = trapez(a, b, fun1, m);
+		integS = simpson(a, b, fun1, m);
+		fprintf(f,"%d;%2.15lf;%2.15lf;%2.15lf;%2.15lf\n",i,(b-a)/((double)m-1), integA, integT, integS);
+	}
+
+	fclose(f);            // zamykamy plik
+}
+
+// funkcja: y = 2 * x
+double fun1(double x) {
+	return 1/(x*x);
+}
+
+// funkcja: y = -x
+double fun2(double a, double b) {
+	return 1/a - 1/b;
+}
