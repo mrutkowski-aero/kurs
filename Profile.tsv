@@ -1,0 +1,7 @@
+
+name	definition	description	parameterid	parametername	unit	input-parameter	output-parameter	
+"DissRate"	"(ustar^3)/(0.4*(z*1000+z0*1000))"	""	""	"DissRate"	""	#f	#f	
+"TurbKinEner"	"(ustar*ustar)/sqrt(0.09)"	""	""	"TurbKinEner"	""	#f	#f	
+"Uabl"	"IF(z<0.025[m],(ustar/0.4)*log((0.025[m]+z0)/z0),(ustar/0.4)*log((z+z0)/z0))"	""	""	"Uabl"	""	#f	#f	
+"ustar"	"1.29 [m/s]"	""	""	"ustar"	""	#f	#f	
+"z0"	"0.005 [m]"	""	""	"z0"	""	#f	#f	
